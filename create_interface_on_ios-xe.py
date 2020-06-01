@@ -21,8 +21,11 @@ def main():
         'Authorization': 'Basic ZGV2ZWxvcGVyOkMxc2NvMTIzNDU='
     }
 
+    if len(dumy) != 1 and int(dumy[0]) >= int(dumy[1]):
+        print("Start value should be smaller than End value")
+        sys.exit(0)
     if len(dumy) == 1:
-        a = int(dumy[0])+1
+        a = int(dumy[0])
         dumy.append(a)
     elif len(dumy) == 0:
         print("Please enter start and end value")
@@ -30,9 +33,7 @@ def main():
     elif len(dumy) > 2:
         print(f"Expected 2 values, start and end, got {len(dumy)}")
         sys.exit(0)
-    if int(dumy[0]) >= int(dumy[1]):
-        print("Start value should be smaller than End value")
-        sys.exit(0)
+
     difference = int(dumy[1])+1 - int(dumy[0])
     if difference > 254:
         print("please enter difference of less than 254")
@@ -69,7 +70,7 @@ def main():
         }'
         data = json.loads(payload)
         data = data["ietf-interfaces:interface"]["name"]
-        print(f"Creating {data} ... ")
+        print(f"Creating {data} with IP - {y}/32 ")
         response = requests.request("POST", url, headers=headers, data = payload, verify=False)
         if response.status_code == 201:
             print(f"Interface created successfully")

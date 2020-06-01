@@ -30,6 +30,7 @@ def main():
                 sys.exit(0)
     else:
         print("Invalid Input, Try again!!")
+        sys.exit(0)
 
     if len(dumy) == 1:
         dumy.append(int(dumy[0]))
