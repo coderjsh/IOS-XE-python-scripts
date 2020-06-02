@@ -34,12 +34,10 @@ def main():
                 continue
             print(x["name"] + " : " + x["description"] + " : " + "No IP")
             continue
-        else:
-            if x["ietf-ip:ipv4"] != {}:
-                print(x["name"] + " : " + "No Description" + " : " + x["ietf-ip:ipv4"]["address"][0]['ip'] + "/" + str(netmask))
-                continue
-            else:
-                print(x["name"] + " : " + "No Description" + " : " + "No IP")
+        elif x["ietf-ip:ipv4"] != {}:
+            print(x["name"] + " : " + "No Description" + " : " + x["ietf-ip:ipv4"]["address"][0]['ip'] + "/" + str(netmask))
+            continue
+        print(x["name"] + " : " + "No Description" + " : " + "No IP")
 
 
 if __name__ == '__main__':
